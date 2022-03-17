@@ -7,6 +7,7 @@ import {
   SetIsLoadingAction,
   SetUserAction,
 } from './types';
+import axios from 'axios';
 
 export const setIsAuth = (auth: boolean): SetAuthAction => ({
   type: AuthActionEnum.SET_IS_AUTH,
@@ -32,19 +33,21 @@ export const login =
   (username: string, password: string) => async (dispatch: AppDispatch) => {
     try {
       dispatch(setIsLoading(true));
-      const response = await fetch(
-        `loacalhost:3000/users?username=${username}&password=${password}`
+
+      const { data } = await axios.get<IUser[]>(
+        `localhost:3004/users?username=${username}&password=${password}`
       );
-      if (response.ok) {
-        const [user]: IUser[] = await response.json();
+      const [user] = data;
+
+      if (user) {
         dispatch(setIsAuth(true));
-        dispatch(setIsLoading(false));
         dispatch(setUser(user));
       } else {
         throw new Error();
       }
     } catch (error) {
       dispatch(setError('Пользователь с таким именем и паролем не существует'));
+    } finally {
       dispatch(setIsLoading(false));
     }
   };
