@@ -9,6 +9,10 @@ import {
 } from './types';
 import axios from 'axios';
 
+const client = axios.create({
+  baseURL: 'http://localhost:3004',
+});
+
 export const setIsAuth = (auth: boolean): SetAuthAction => ({
   type: AuthActionEnum.SET_IS_AUTH,
   payload: auth,
@@ -34,8 +38,8 @@ export const login =
     try {
       dispatch(setIsLoading(true));
 
-      const { data } = await axios.get<IUser[]>(
-        `http://localhost:3004/users?username=${username}&password=${password}`
+      const { data } = await client.get<IUser[]>(
+        `/users?username=${username}&password=${password}`
       );
 
       if (data.length) {

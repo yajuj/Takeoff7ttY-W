@@ -12,7 +12,6 @@ import {
   fetchContactsAsync,
   searchContactsAsync,
 } from '../store/reducers/contacts/contactsActionCreators';
-import { randomId } from '../utils/randomId';
 
 const MainPage = () => {
   const dispatch = useDispatch();
@@ -30,8 +29,7 @@ const MainPage = () => {
   };
 
   const addContact = (n: string) => {
-    const contactObj: IContact = {
-      id: randomId(),
+    const contactObj: Omit<IContact, 'id'> = {
       avatar: 'https://i.pravatar.cc/45',
       name: n,
     };
