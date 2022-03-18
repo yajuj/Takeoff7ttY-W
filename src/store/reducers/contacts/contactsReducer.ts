@@ -17,18 +17,20 @@ const contactsReducer = (
     case ContactsActionEnum.SET_IS_LOADING:
       return { ...state, isLoading: action.payload };
     case ContactsActionEnum.SET_CONTACTS:
-      return { ...state, contacts: action.payload };
+      return { ...state, contacts: action.payload, error: null };
     case ContactsActionEnum.REMOVE_CONTACT:
       return {
         ...state,
         contacts: state.contacts.filter(
           contact => action.payload !== contact.id
         ),
+        error: null,
       };
     case ContactsActionEnum.ADD_CONTACT:
       return {
         ...state,
         contacts: [...state.contacts, action.payload],
+        error: null,
       };
     case ContactsActionEnum.UPDATE_CONTACT:
       return {
@@ -38,6 +40,7 @@ const contactsReducer = (
             ? { ...contact, ...action.payload }
             : contact
         ),
+        error: null,
       };
     default:
       return state;
