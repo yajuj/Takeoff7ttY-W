@@ -42,30 +42,26 @@ export const updateContact = (contact: IContact): UpdateContactAction => ({
   payload: contact,
 });
 
-export const fetchContactsAsync =
-  (id: string) => async (dispatch: AppDispatch) => {
-    try {
-      dispatch(setIsLoading(true));
-      const { data } = await axios.get<IContact[]>(
-        `localhost:3004/contacts/${id}`
-      );
-      if (data.length) {
-        dispatch(setContacts(data));
-      } else {
-        const obj = { id, contacts: [] };
-        await axios.post(`localhost:3004/contacts/${id}`, obj);
-      }
-    } catch (error) {
-      dispatch(setError('Произошла ошибка'));
-    } finally {
-      dispatch(setIsLoading(false));
+export const fetchContactsAsync = () => async (dispatch: AppDispatch) => {
+  try {
+    dispatch(setIsLoading(true));
+    const { data } = await axios.get<IContact[]>(
+      'http://localhost:3004/contacts'
+    );
+    if (data.length) {
+      dispatch(setContacts(data));
     }
-  };
+  } catch (error) {
+    dispatch(setError('Произошла ошибка'));
+  } finally {
+    dispatch(setIsLoading(false));
+  }
+};
 
 export const addContactAsync =
   (contact: IContact) => async (dispatch: AppDispatch) => {
     try {
-      await axios.put(`localhost:3004/contacts/`, contact);
+      await axios.post(`http://localhost:3004/contacts/`, contact);
       dispatch(addContact(contact));
     } catch (error) {
       setError('Не удалось добавить контакт');
@@ -75,9 +71,37 @@ export const addContactAsync =
 export const removeContactAsync =
   (id: string) => async (dispatch: AppDispatch) => {
     try {
-      await axios.delete(`localhost:3004/contacts/${id}`);
+      await axios.delete(`http://localhost:3004/contacts/${id}`);
       dispatch(removeContact(id));
     } catch (error) {
-      setError('Не удалось добавить контакт');
+      dispatch(setError('Не удалось удалить контакт'));
+    }
+  };
+
+export const updateContactAsync =
+  (contact: IContact) => async (dispatch: AppDispatch) => {
+    try {
+      await axios.patch(
+        `http://localhost:3004/contacts/${contact.id}`,
+        contact
+      );
+      dispatch(updateContact(contact));
+    } catch (error) {
+      dispatch(setError('Не удалось обновить контакт'));
+    }
+  };
+
+export const searchContactsAsync =
+  (query: string) => async (dispatch: AppDispatch) => {
+    try {
+      dispatch(setIsLoading(true));
+      const { data } = await axios.get<IContact[]>(
+        `http://localhost:3004/contacts?q=${query}`
+      );
+      dispatch(setContacts(data));
+    } catch (error) {
+      dispatch(setError('Произошла ошибка'));
+    } finally {
+      dispatch(setIsLoading(false));
     }
   };

@@ -1,0 +1,31 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "user",
+      "password": "user"
+    }
+  ],
+  "contacts": [
+    {
+      "id": "2",
+      "name": "Марина",
+      "avatar": "https://i.pravatar.cc/45"
+    },
+    {
+      "id": "3",
+      "name": "Олег",
+      "avatar": "https://i.pravatar.cc/45"
+    },
+    {
+      "id": "4",
+      "name": "Дарья",
+      "avatar": "https://i.pravatar.cc/45"
+    },
+    {
+      "id": "11.527151862702185",
+      "avatar": "https://i.pravatar.cc/45",
+      "name": "alex"
+    }
+  ]
+}

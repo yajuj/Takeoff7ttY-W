@@ -8,7 +8,7 @@ const initialState: IContactsState = {
 };
 
 const contactsReducer = (
-  state: IContactsState,
+  state: IContactsState = initialState,
   action: ContactsAction
 ): IContactsState => {
   switch (action.type) {
@@ -22,7 +22,7 @@ const contactsReducer = (
       return {
         ...state,
         contacts: state.contacts.filter(
-          contact => action.payload != contact.id
+          contact => action.payload !== contact.id
         ),
       };
     case ContactsActionEnum.ADD_CONTACT:

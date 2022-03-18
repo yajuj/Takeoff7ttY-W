@@ -35,13 +35,12 @@ export const login =
       dispatch(setIsLoading(true));
 
       const { data } = await axios.get<IUser[]>(
-        `localhost:3004/users?username=${username}&password=${password}`
+        `http://localhost:3004/users?username=${username}&password=${password}`
       );
-      const [user] = data;
 
-      if (user) {
+      if (data.length) {
         dispatch(setIsAuth(true));
-        dispatch(setUser(user));
+        dispatch(setUser(data[0]));
       } else {
         throw new Error();
       }
