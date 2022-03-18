@@ -11,11 +11,11 @@ const initialState: IAuthState = {
 const authReducer = (state = initialState, action: AuthAction): IAuthState => {
   switch (action.type) {
     case AuthActionEnum.SET_IS_AUTH:
-      return { ...state, isAuth: action.payload };
+      return { ...state, isAuth: action.payload, error: null };
     case AuthActionEnum.SET_ERROR:
       return { ...state, error: action.payload };
     case AuthActionEnum.SET_USER:
-      return { ...state, user: action.payload };
+      return { ...state, user: action.payload, error: null };
     case AuthActionEnum.SET_IS_LOADING:
       return { ...state, isLoading: action.payload };
     default:
