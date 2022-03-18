@@ -59,10 +59,13 @@ export const fetchContactsAsync = () => async (dispatch: AppDispatch) => {
 };
 
 export const addContactAsync =
-  (contact: IContact) => async (dispatch: AppDispatch) => {
+  (contact: Omit<IContact, 'id'>) => async (dispatch: AppDispatch) => {
     try {
-      await axios.post(`http://localhost:3004/contacts/`, contact);
-      dispatch(addContact(contact));
+      const { data } = await axios.post<IContact>(
+        `http://localhost:3004/contacts/`,
+        contact
+      );
+      dispatch(addContact(data));
     } catch (error) {
       setError('Не удалось добавить контакт');
     }
