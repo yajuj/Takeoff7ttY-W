@@ -24,4 +24,5 @@ code {
   font-size: 24px;
   border-radius: 50%;
   background: green;
+  cursor: pointer;
 }
