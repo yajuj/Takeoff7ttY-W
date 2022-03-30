@@ -61,22 +61,21 @@ const MainPage = () => {
               className='me-auto position-relative'
               placeholder='Введите имя...'
             />
-
-            <button
-              style={{
-                display: `${query ? 'block' : 'none'}`,
-                position: 'absolute',
-                right: '80px',
-                top: '50%',
-                transform: 'translate(0,-50%)',
-                zIndex: 999,
-              }}
-              onClick={() => setQuery('')}
-              type='button'
-              className='btn-close'
-              aria-label='Close'
-            ></button>
-
+            {query && (
+              <button
+                style={{
+                  position: 'absolute',
+                  right: '80px',
+                  top: '50%',
+                  transform: 'translate(0,-50%)',
+                  zIndex: 999,
+                }}
+                onClick={() => setQuery('')}
+                type='button'
+                className='btn-close'
+                aria-label='Close'
+              ></button>
+            )}
             <Button
               disabled={!query}
               onClick={handleSearch}
