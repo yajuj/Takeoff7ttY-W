@@ -21,11 +21,7 @@ const ModalComponent: React.FC<IModalComponent> = ({
 
   const handleClose = () => {
     setShow(false);
-<<<<<<< HEAD
     setValue(str);
-=======
-    setValue('');
->>>>>>> 1a2b70fe604a0a4a4a10f6b56c552845d9540163
   };
   const handleShow = () => setShow(true);
 

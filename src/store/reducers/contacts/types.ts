@@ -12,6 +12,7 @@ export enum ContactsActionEnum {
   SET_CONTACTS = 'SET_CONTACTS',
   ADD_CONTACT = 'ADD_CONTACT',
   REMOVE_CONTACT = 'REMOVE_CONTACT',
+  REMOVE_CONTACTS = 'REMOVE_CONTACTS',
   UPDATE_CONTACT = 'UPDATE_CONTACT',
 }
 
@@ -40,6 +41,10 @@ export interface RemoveContactAction {
   payload: string;
 }
 
+export interface RemoveContactsAction {
+  type: ContactsActionEnum.REMOVE_CONTACTS;
+}
+
 export interface UpdateContactAction {
   type: ContactsActionEnum.UPDATE_CONTACT;
   payload: IContact;
@@ -51,4 +56,5 @@ export type ContactsAction =
   | SetContactsAction
   | AddContactAction
   | RemoveContactAction
+  | RemoveContactsAction
   | UpdateContactAction;

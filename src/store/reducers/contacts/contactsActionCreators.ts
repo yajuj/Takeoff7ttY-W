@@ -6,6 +6,7 @@ import {
   AddContactAction,
   ContactsActionEnum,
   RemoveContactAction,
+  RemoveContactsAction,
   SetContactsAction,
   SetErrorAction,
   SetIsLoadingAction,
@@ -34,6 +35,10 @@ export const setContacts = (contacts: IContact[]): SetContactsAction => ({
 export const removeContact = (id: string): RemoveContactAction => ({
   type: ContactsActionEnum.REMOVE_CONTACT,
   payload: id,
+});
+
+export const removeContacts = (): RemoveContactsAction => ({
+  type: ContactsActionEnum.REMOVE_CONTACTS,
 });
 
 export const addContact = (contact: IContact): AddContactAction => ({

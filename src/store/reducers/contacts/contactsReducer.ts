@@ -26,6 +26,12 @@ const contactsReducer = (
         ),
         error: null,
       };
+    case ContactsActionEnum.REMOVE_CONTACTS:
+      return {
+        ...state,
+        contacts: [],
+        error: null,
+      };
     case ContactsActionEnum.ADD_CONTACT:
       return {
         ...state,

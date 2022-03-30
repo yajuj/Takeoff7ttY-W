@@ -8,6 +8,7 @@ import {
   SetUserAction,
 } from './types';
 import axios from 'axios';
+import { removeContacts } from '../contacts/contactsActionCreators';
 
 const client = axios.create({
   baseURL: 'http://localhost:3004',
@@ -85,6 +86,7 @@ export const signUp =
 export const logout = () => async (dispatch: AppDispatch) => {
   dispatch(setIsAuth(false));
   dispatch(setUser({} as IUser));
+  dispatch(removeContacts());
   localStorage.removeItem('auth');
 };
 
