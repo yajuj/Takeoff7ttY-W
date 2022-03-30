@@ -29,6 +29,7 @@ const MainPage = () => {
   };
 
   const addContact = (n: string) => {
+    if (!n.trim()) return;
     const contactObj: Omit<IContact, 'id'> = {
       avatar: 'https://i.pravatar.cc/45',
       name: n,

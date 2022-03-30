@@ -43,6 +43,7 @@ export const login =
       );
 
       if (data.length) {
+        localStorage.setItem('auth', JSON.stringify(data[0]));
         dispatch(setIsAuth(true));
         dispatch(setUser(data[0]));
       } else {
@@ -54,3 +55,12 @@ export const login =
       dispatch(setIsLoading(false));
     }
   };
+
+export const checkAuthLocalStorage = () => async (dispatch: AppDispatch) => {
+  const auth = localStorage.getItem('auth');
+  if (!auth) return;
+
+  const user = JSON.parse(auth);
+  dispatch(setIsAuth(true));
+  dispatch(setUser(user as IUser));
+};
