@@ -21,13 +21,15 @@ const ModalComponent: React.FC<IModalComponent> = ({
 
   const handleClose = () => {
     setShow(false);
+    setValue('');
+  };
+  const handleShow = () => {
+    setShow(true);
     setValue(str);
   };
-  const handleShow = () => setShow(true);
 
   const handleSubmit = () => {
     submit(value);
-    setValue('');
     handleClose();
   };
 

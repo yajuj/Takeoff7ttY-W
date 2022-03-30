@@ -23,7 +23,7 @@ const Contact: React.FC<IContact> = ({ id, avatar, name, ownerId }) => {
   return (
     <div className='d-flex align-items-center justify-content-between position-relative'>
       <img className='rounded-circle' src={avatar} alt='avatar' />
-      <h3>{name}</h3>
+      <h3 className='text-break'>{name}</h3>
       <div className='d-flex align-items-center justify-content-between'>
         <ModalComponent
           title='Редактировать'
