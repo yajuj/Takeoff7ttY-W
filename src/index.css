@@ -30,6 +30,8 @@ code {
   background: green;
   cursor: pointer;
 }
+
+
 a:active,
 a:hover,
 a:focus,
@@ -38,4 +40,14 @@ a {
   color: inherit !important;
   cursor: pointer;
 }
+
+@media (max-width: 425px) { 
+  .container > button {
+    bottom: 20px;
+    right: 10px;
+
+  }
+ }
+
+
 

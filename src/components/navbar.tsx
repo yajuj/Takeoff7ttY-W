@@ -17,8 +17,8 @@ const NavbarComponent: React.FC<INavbarComponent> = ({ isAuth, logout }) => {
           {isAuth ? (
             <Nav.Link onClick={logout}>Logout</Nav.Link>
           ) : (
-            <Nav.Link>
-              <Link to='login'>Login</Link>
+            <Nav.Link as={Link} to='login'>
+              Login
             </Nav.Link>
           )}
         </Nav>

@@ -1,5 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Col, Form, ListGroup, Row, Stack } from 'react-bootstrap';
+import {
+  Button,
+  Col,
+  Form,
+  InputGroup,
+  ListGroup,
+  Row,
+  Stack,
+} from 'react-bootstrap';
 import { BsPlus } from 'react-icons/bs';
 import { useDispatch } from 'react-redux';
 import Contact from '../components/contact';
@@ -46,21 +54,39 @@ const MainPage = () => {
     <div className='container my-5'>
       <Row>
         <Col sm={6} className='mx-auto'>
-          <Stack direction='horizontal' gap={3}>
+          <InputGroup className='mb-4'>
             <Form.Control
               value={query}
               onChange={e => setQuery(e.target.value)}
-              className='me-auto'
+              className='me-auto position-relative'
               placeholder='Введите имя...'
             />
+
+            <button
+              style={{
+                display: `${query ? 'block' : 'none'}`,
+                position: 'absolute',
+                right: '80px',
+                top: '50%',
+                transform: 'translate(0,-50%)',
+                zIndex: 999,
+              }}
+              onClick={() => setQuery('')}
+              type='button'
+              className='btn-close'
+              aria-label='Close'
+            ></button>
+
             <Button
               disabled={!query}
               onClick={handleSearch}
-              variant='secondary'
+              variant='outline-secondary'
+              id='button-addon1'
             >
               Искать
             </Button>
-          </Stack>
+          </InputGroup>
+
           {error && <p className='text-danger'>{error}</p>}
           <div className='my-3'></div>
           {contacts.map(contact => (
