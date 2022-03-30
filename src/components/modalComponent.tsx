@@ -19,11 +19,15 @@ const ModalComponent: React.FC<IModalComponent> = ({
   const [value, setValue] = useState(str);
   const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+    setValue(str);
+  };
   const handleShow = () => setShow(true);
 
   const handleSubmit = () => {
     submit(value);
+    setValue('');
     handleClose();
   };
 

@@ -17,13 +17,13 @@ import {
 const MainPage = () => {
   const dispatch = useDispatch();
   const { user } = useAuth();
+  const [query, setQuery] = useState('');
+
   useEffect(() => {
-    dispatch(fetchContactsAsync(user!.id));
-  }, [dispatch]);
+    !query && dispatch(fetchContactsAsync(user!.id));
+  }, [dispatch, query]);
 
   const { isLoading, error, contacts } = useContacts();
-
-  const [query, setQuery] = useState('');
 
   const handleSearch = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
