@@ -43,7 +43,7 @@ const MainPage = () => {
   if (isLoading) return <CustomSpinner />;
 
   return (
-    <div className='container p-3 my-2 overflow-hidden position-relative'>
+    <div className='container my-5'>
       <Row>
         <Col sm={6} className='mx-auto'>
           <Stack direction='horizontal' gap={3}>
