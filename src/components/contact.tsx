@@ -9,7 +9,7 @@ import {
 } from '../store/reducers/contacts/contactsActionCreators';
 import ModalComponent from './modalComponent';
 
-const Contact: React.FC<IContact> = ({ id, avatar, name }) => {
+const Contact: React.FC<IContact> = ({ id, avatar, name, ownerId }) => {
   const dispatch = useDispatch();
 
   const removeContact = () => {
@@ -17,7 +17,7 @@ const Contact: React.FC<IContact> = ({ id, avatar, name }) => {
   };
 
   const updateContact = (n: string) => {
-    dispatch(updateContactAsync({ id, avatar, name: n }));
+    dispatch(updateContactAsync({ id, avatar, name: n, ownerId }));
   };
 
   return (

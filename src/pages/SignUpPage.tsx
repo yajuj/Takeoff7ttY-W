@@ -4,9 +4,9 @@ import { useDispatch } from 'react-redux';
 import { Link, Navigate } from 'react-router-dom';
 import CustomSpinner from '../components/customSpinner';
 import useAuth from '../hooks/useAuth';
-import { login } from '../store/reducers/auth/authActionCreators';
+import { signUp } from '../store/reducers/auth/authActionCreators';
 
-const LoginPage: React.FC = () => {
+const SignUpPage: React.FC = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const { error, isAuth, isLoading } = useAuth();
@@ -14,7 +14,7 @@ const LoginPage: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(login(username, password));
+    dispatch(signUp(username, password));
   };
 
   if (isLoading) return <CustomSpinner />;
@@ -24,7 +24,7 @@ const LoginPage: React.FC = () => {
   return (
     <div className='d-sm-flex vh-100 justify-content-center align-items-center'>
       <Form onSubmit={handleSubmit}>
-        <h2>Login</h2>
+        <h2>SignUp</h2>
         <Form.Group className='mb-3' controlId='username'>
           <Form.Label>Username</Form.Label>
           <Form.Control
@@ -46,13 +46,14 @@ const LoginPage: React.FC = () => {
         {error && <p className='text-danger'>{error}</p>}
         <Form.Group className='mt-3'>
           <Button variant='primary' type='submit'>
-            Login
+            SignUp
           </Button>
         </Form.Group>
         <Form.Group className='mt-3'>
           <Button variant='link'>
-            <Link to='/signup'>
-              SignUp if you don't have <br /> an account yet
+            <Link to='/login'>
+              Already have an account?
+              <br /> Login now
             </Link>
           </Button>
         </Form.Group>
@@ -61,4 +62,4 @@ const LoginPage: React.FC = () => {
   );
 };
 
-export default LoginPage;
+export default SignUpPage;

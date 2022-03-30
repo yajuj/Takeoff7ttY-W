@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import Contact from '../components/contact';
 import CustomSpinner from '../components/customSpinner';
 import ModalComponent from '../components/modalComponent';
+import useAuth from '../hooks/useAuth';
 import useContacts from '../hooks/useContacts';
 import { IContact } from '../models/contact-model';
 import {
@@ -15,28 +16,28 @@ import {
 
 const MainPage = () => {
   const dispatch = useDispatch();
-
+  const { user } = useAuth();
   useEffect(() => {
-    dispatch(fetchContactsAsync());
+    dispatch(fetchContactsAsync(user!.id));
   }, [dispatch]);
 
   const { isLoading, error, contacts } = useContacts();
 
   const [query, setQuery] = useState('');
 
-  const handleSearch = () => {
-    dispatch(searchContactsAsync(query));
+  const handleSearch = (e: React.FormEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    dispatch(searchContactsAsync(query, user!.id));
   };
 
   const addContact = (n: string) => {
     const contactObj: Omit<IContact, 'id'> = {
       avatar: 'https://i.pravatar.cc/45',
       name: n,
+      ownerId: user!.id,
     };
     dispatch(addContactAsync(contactObj));
   };
-
-  const isDisabled = !isLoading && !!error;
 
   if (isLoading) return <CustomSpinner />;
 
@@ -48,15 +49,10 @@ const MainPage = () => {
             <Form.Control
               value={query}
               onChange={e => setQuery(e.target.value)}
-              disabled={isDisabled}
               className='me-auto'
               placeholder='Введите имя...'
             />
-            <Button
-              onClick={handleSearch}
-              disabled={isDisabled}
-              variant='secondary'
-            >
+            <Button onClick={handleSearch} variant='secondary'>
               Искать
             </Button>
           </Stack>

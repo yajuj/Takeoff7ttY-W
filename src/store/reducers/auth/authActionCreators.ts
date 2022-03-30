@@ -43,6 +43,7 @@ export const login =
       );
 
       if (data.length) {
+        localStorage.setItem('auth', JSON.stringify(data[0]));
         dispatch(setIsAuth(true));
         dispatch(setUser(data[0]));
       } else {
@@ -54,3 +55,44 @@ export const login =
       dispatch(setIsLoading(false));
     }
   };
+export const signUp =
+  (username: string, password: string) => async (dispatch: AppDispatch) => {
+    try {
+      dispatch(setIsLoading(true));
+
+      const { data } = await client.post<IUser>('/users', {
+        username,
+        password,
+      });
+
+      if (data) {
+        localStorage.setItem('auth', JSON.stringify(data));
+        dispatch(setIsAuth(true));
+        dispatch(setUser(data));
+      } else {
+        throw new Error();
+      }
+    } catch (error) {
+      dispatch(
+        setError(
+          `Не удалось зарегистрировать пользователся с username: ${username} и password: ${password}`
+        )
+      );
+    } finally {
+      dispatch(setIsLoading(false));
+    }
+  };
+export const logout = () => async (dispatch: AppDispatch) => {
+  dispatch(setIsAuth(false));
+  dispatch(setUser({} as IUser));
+  localStorage.removeItem('auth');
+};
+
+export const checkAuthLocalStorage = () => async (dispatch: AppDispatch) => {
+  const auth = localStorage.getItem('auth');
+  if (!auth) return;
+
+  const user = JSON.parse(auth);
+  dispatch(setIsAuth(true));
+  dispatch(setUser(user as IUser));
+};

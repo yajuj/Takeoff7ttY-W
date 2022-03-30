@@ -4,28 +4,61 @@
       "id": "1",
       "username": "user",
       "password": "user"
+    },
+    {
+      "username": "user",
+      "password": "user1",
+      "id": "vvNjEx_"
     }
   ],
   "contacts": [
     {
       "id": "2",
       "name": "Марина",
-      "avatar": "https://i.pravatar.cc/45"
+      "avatar": "https://i.pravatar.cc/45",
+      "ownerId": "1"
     },
     {
       "id": "3",
       "name": "Олег",
-      "avatar": "https://i.pravatar.cc/45"
+      "avatar": "https://i.pravatar.cc/45",
+      "ownerId": "1"
     },
     {
       "id": "4",
       "name": "Дарья",
-      "avatar": "https://i.pravatar.cc/45"
+      "avatar": "https://i.pravatar.cc/45",
+      "ownerId": "1"
     },
     {
       "avatar": "https://i.pravatar.cc/45",
       "name": "Арсений",
-      "id": "6eLG68D"
+      "id": "6eLG68D",
+      "ownerId": "1"
+    },
+    {
+      "avatar": "https://i.pravatar.cc/45",
+      "name": "dfasdfa",
+      "ownerId": "1",
+      "id": "FHFdJsj"
+    },
+    {
+      "avatar": "https://i.pravatar.cc/45",
+      "name": "олег",
+      "ownerId": "1",
+      "id": "tT6Wyl6"
+    },
+    {
+      "avatar": "https://i.pravatar.cc/45",
+      "name": "dfsfs",
+      "ownerId": "vvNjEx_",
+      "id": "LCTkBiF"
+    },
+    {
+      "avatar": "https://i.pravatar.cc/45",
+      "name": "fsadfas",
+      "ownerId": "vvNjEx_",
+      "id": "W6qpdpg"
     }
   ]
 }

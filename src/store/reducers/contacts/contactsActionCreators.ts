@@ -46,27 +46,32 @@ export const updateContact = (contact: IContact): UpdateContactAction => ({
   payload: contact,
 });
 
-export const fetchContactsAsync = () => async (dispatch: AppDispatch) => {
-  try {
-    dispatch(setIsLoading(true));
-    const { data } = await client.get<IContact[]>('/contacts');
-    if (data.length) {
-      dispatch(setContacts(data));
+export const fetchContactsAsync =
+  (id: string) => async (dispatch: AppDispatch) => {
+    try {
+      dispatch(setIsLoading(true));
+      const { data } = await client.get<IContact[]>(`/contacts?ownerId=${id}`);
+      if (data.length) {
+        dispatch(setContacts(data));
+      }
+    } catch (error) {
+      dispatch(setError('Произошла ошибка'));
+    } finally {
+      dispatch(setIsLoading(false));
     }
-  } catch (error) {
-    dispatch(setError('Произошла ошибка'));
-  } finally {
-    dispatch(setIsLoading(false));
-  }
-};
+  };
 
 export const addContactAsync =
   (contact: Omit<IContact, 'id'>) => async (dispatch: AppDispatch) => {
+    if (!contact.name.trim()) {
+      dispatch(setError('Имя контакта не может быть пустым'));
+      return;
+    }
     try {
       const { data } = await client.post<IContact>(`/contacts/`, contact);
       dispatch(addContact(data));
     } catch (error) {
-      setError('Не удалось добавить контакт');
+      dispatch(setError('Не удалось добавить контакт'));
     }
   };
 
@@ -91,10 +96,12 @@ export const updateContactAsync =
   };
 
 export const searchContactsAsync =
-  (query: string) => async (dispatch: AppDispatch) => {
+  (query: string, ownerId: string) => async (dispatch: AppDispatch) => {
     try {
       dispatch(setIsLoading(true));
-      const { data } = await client.get<IContact[]>(`/contacts?q=${query}`);
+      const { data } = await client.get<IContact[]>(
+        `/contacts?ownerId=${ownerId}&q=${query}`
+      );
       dispatch(setContacts(data));
     } catch (error) {
       dispatch(setError('Произошла ошибка'));
