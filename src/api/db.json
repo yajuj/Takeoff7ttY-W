@@ -13,12 +13,6 @@
   ],
   "contacts": [
     {
-      "id": "2",
-      "name": "Марина",
-      "avatar": "https://i.pravatar.cc/45",
-      "ownerId": "1"
-    },
-    {
       "id": "3",
       "name": "Олег",
       "avatar": "https://i.pravatar.cc/45",
