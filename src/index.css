@@ -35,7 +35,3 @@ a {
   cursor: pointer;
 }
 
-.container > button {
-  position: absolute ;
-  top: 9999999px;
-}
