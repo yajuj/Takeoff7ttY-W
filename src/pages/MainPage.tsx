@@ -53,7 +53,11 @@ const MainPage = () => {
               className='me-auto'
               placeholder='Введите имя...'
             />
-            <Button onClick={handleSearch} variant='secondary'>
+            <Button
+              disabled={!query}
+              onClick={handleSearch}
+              variant='secondary'
+            >
               Искать
             </Button>
           </Stack>

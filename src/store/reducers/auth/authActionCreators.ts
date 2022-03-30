@@ -86,8 +86,8 @@ export const signUp =
 export const logout = () => async (dispatch: AppDispatch) => {
   dispatch(setIsAuth(false));
   dispatch(setUser({} as IUser));
-  dispatch(removeContacts());
   localStorage.removeItem('auth');
+  dispatch(removeContacts()); //  window.location.href = 'login';
 };
 
 export const checkAuthLocalStorage = () => async (dispatch: AppDispatch) => {
