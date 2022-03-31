@@ -56,7 +56,11 @@ const ModalComponent: React.FC<IModalComponent> = ({
           <Button variant='secondary' onClick={handleClose}>
             Закрыть
           </Button>
-          <Button variant='primary' onClick={handleSubmit}>
+          <Button
+            disabled={!value.trim()}
+            variant='primary'
+            onClick={handleSubmit}
+          >
             {btnTitle}
           </Button>
         </Modal.Footer>
