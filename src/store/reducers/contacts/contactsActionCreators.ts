@@ -105,7 +105,7 @@ export const searchContactsAsync =
     try {
       dispatch(setIsLoading(true));
       const { data } = await client.get<IContact[]>(
-        `/contacts?ownerId=${ownerId}&q=${query}`
+        `/contacts?ownerId=${ownerId}&name_like=${query}`
       );
       dispatch(setContacts(data));
     } catch (error) {
