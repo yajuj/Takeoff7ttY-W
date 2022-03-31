@@ -1,17 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import {
-  Button,
-  Col,
-  Form,
-  InputGroup,
-  ListGroup,
-  Row,
-  Stack,
-} from 'react-bootstrap';
+import React, { useEffect, useRef, useState } from 'react';
+import { Button, Col, Form, InputGroup, Row } from 'react-bootstrap';
 import { BsPlus } from 'react-icons/bs';
 import { useDispatch } from 'react-redux';
-import Contact from '../components/contact';
-import CustomSpinner from '../components/customSpinner';
+import ContactsList from '../components/contactsList';
 import ModalComponent from '../components/modalComponent';
 import useAuth from '../hooks/useAuth';
 import useContacts from '../hooks/useContacts';
@@ -33,9 +24,14 @@ const MainPage = () => {
 
   const { isLoading, error, contacts } = useContacts();
 
-  const handleSearch = (e: React.FormEvent<HTMLButtonElement>) => {
-    e.preventDefault();
+  const inputEl = useRef<HTMLInputElement>(null);
+
+  const handleSearch = (e?: React.FormEvent<HTMLButtonElement>) => {
+    e && e.preventDefault();
     dispatch(searchContactsAsync(query, user!.id));
+    if (inputEl.current) {
+      inputEl.current.focus();
+    }
   };
 
   const addContact = (n: string) => {
@@ -48,8 +44,6 @@ const MainPage = () => {
     dispatch(addContactAsync(contactObj));
   };
 
-  if (isLoading) return <CustomSpinner />;
-
   return (
     <div className='container my-5'>
       <Row>
@@ -57,7 +51,9 @@ const MainPage = () => {
           <InputGroup className='mb-4'>
             <Form.Control
               value={query}
+              ref={inputEl}
               onChange={e => setQuery(e.target.value)}
+              onKeyDown={e => e.key === 'Enter' && handleSearch()}
               className='me-auto position-relative'
               placeholder='Введите имя...'
             />
@@ -88,11 +84,7 @@ const MainPage = () => {
 
           {error && <p className='text-danger'>{error}</p>}
           <div className='my-3'></div>
-          {contacts.map(contact => (
-            <ListGroup key={contact.id}>
-              <Contact {...contact} />
-            </ListGroup>
-          ))}
+          <ContactsList isLoading={isLoading} contacts={contacts} />
         </Col>
       </Row>
       <ModalComponent

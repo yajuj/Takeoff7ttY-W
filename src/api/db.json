@@ -39,12 +39,6 @@
       "ownerId": "1"
     },
     {
-      "id": "4",
-      "name": "Дарья",
-      "avatar": "https://i.pravatar.cc/45",
-      "ownerId": "1"
-    },
-    {
       "avatar": "https://i.pravatar.cc/45",
       "name": "Арсений",
       "id": "6eLG68D",
@@ -109,6 +103,12 @@
       "name": "sssssssssssssssssssssssss",
       "ownerId": "NRS_Qwf",
       "id": "t5ro-7d"
+    },
+    {
+      "avatar": "https://i.pravatar.cc/45",
+      "name": "ddddd",
+      "ownerId": "1",
+      "id": "RPistPP"
     }
   ]
 }
