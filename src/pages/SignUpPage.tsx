@@ -17,7 +17,8 @@ const SignUpPage: React.FC = () => {
     dispatch(signUp(username, password));
   };
 
-  if (isLoading) return <CustomSpinner />;
+  if (isLoading)
+    return <CustomSpinner style={{ width: '100vw', height: '100vh' }} />;
 
   if (isAuth) return <Navigate to='/' replace={true} />;
 

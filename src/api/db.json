@@ -29,15 +29,14 @@
       "username": "hello",
       "password": "12345",
       "id": "NRS_Qwf"
+    },
+    {
+      "username": "user",
+      "password": "user",
+      "id": "UUgHaq5"
     }
   ],
   "contacts": [
-    {
-      "id": "3",
-      "name": "Олег",
-      "avatar": "https://i.pravatar.cc/45",
-      "ownerId": "1"
-    },
     {
       "avatar": "https://i.pravatar.cc/45",
       "name": "Арсений",
@@ -109,6 +108,12 @@
       "name": "ddddd",
       "ownerId": "1",
       "id": "RPistPP"
+    },
+    {
+      "avatar": "https://i.pravatar.cc/45",
+      "name": "ssssssssss",
+      "ownerId": "1",
+      "id": "lb1sHwn"
     }
   ]
 }

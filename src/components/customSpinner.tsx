@@ -1,9 +1,16 @@
 import React from 'react';
 import Spinner from 'react-bootstrap/esm/Spinner';
+import CSS from 'csstype';
+interface ICustomSpinner {
+  style?: CSS.Properties;
+}
 
-const CustomSpinner = () => {
+const CustomSpinner: React.FC<ICustomSpinner> = ({ style }) => {
   return (
-    <div className='d-flex  justify-content-center align-items-center'>
+    <div
+      style={style}
+      className='d-flex  justify-content-center align-items-center'
+    >
       <Spinner animation='border' size='sm' />
     </div>
   );
