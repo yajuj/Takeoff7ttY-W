@@ -60,7 +60,11 @@ export const signUp =
   (username: string, password: string) => async (dispatch: AppDispatch) => {
     try {
       dispatch(setIsLoading(true));
-
+      const { data: existingUser } = await client.get<IUser[]>(
+        `/users?username=${username}`
+      );
+      if (existingUser[0]) throw new Error();
+      
       const { data } = await client.post<IUser>('/users', {
         username,
         password,
