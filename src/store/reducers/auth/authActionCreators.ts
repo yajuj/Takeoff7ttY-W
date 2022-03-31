@@ -36,6 +36,10 @@ export const setError = (error: string): SetErrorAction => ({
 
 export const login =
   (username: string, password: string) => async (dispatch: AppDispatch) => {
+    if (!username.trim() || !password.trim()) {
+      dispatch(setError(`Поля username и password не могут быть пустыми`));
+      return;
+    }
     try {
       dispatch(setIsLoading(true));
 
@@ -58,8 +62,16 @@ export const login =
   };
 export const signUp =
   (username: string, password: string) => async (dispatch: AppDispatch) => {
+    if (!username.trim() || !password.trim()) {
+      dispatch(setError(`Поля username и password не могут быть пустыми`));
+      return;
+    }
     try {
       dispatch(setIsLoading(true));
+      const { data: existingUser } = await client.get<IUser[]>(
+        `/users?username=${username}`
+      );
+      if (existingUser[0]) throw new Error();
 
       const { data } = await client.post<IUser>('/users', {
         username,
@@ -70,6 +82,7 @@ export const signUp =
         localStorage.setItem('auth', JSON.stringify(data));
         dispatch(setIsAuth(true));
         dispatch(setUser(data));
+        dispatch(setError(''));
       } else {
         throw new Error();
       }

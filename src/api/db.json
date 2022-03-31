@@ -4,36 +4,6 @@
       "id": "1",
       "username": "user",
       "password": "user"
-    },
-    {
-      "username": "user",
-      "password": "user1",
-      "id": "vvNjEx_"
-    },
-    {
-      "username": "userh",
-      "password": "userh",
-      "id": "nIan3R1"
-    },
-    {
-      "username": "omb15t1iz4",
-      "password": "12345",
-      "id": "g_HqA31"
-    },
-    {
-      "username": "userj",
-      "password": "user",
-      "id": "DEa-2Km"
-    },
-    {
-      "username": "hello",
-      "password": "12345",
-      "id": "NRS_Qwf"
-    },
-    {
-      "username": "user",
-      "password": "user",
-      "id": "UUgHaq5"
     }
   ],
   "contacts": [
@@ -45,81 +15,9 @@
     },
     {
       "avatar": "https://i.pravatar.cc/45",
-      "name": "футляр",
+      "name": "Олег",
       "ownerId": "1",
       "id": "FHFdJsj"
-    },
-    {
-      "avatar": "https://i.pravatar.cc/45",
-      "name": "fsadfas",
-      "ownerId": "vvNjEx_",
-      "id": "W6qpdpg"
-    },
-    {
-      "avatar": "https://i.pravatar.cc/45",
-      "name": "fssdfffffffffffffffffff",
-      "ownerId": "vvNjEx_",
-      "id": "vOhYjCR"
-    },
-    {
-      "avatar": "https://i.pravatar.cc/45",
-      "name": "aaaaaaaaaaaaa",
-      "ownerId": "vvNjEx_",
-      "id": "vmSTMjK"
-    },
-    {
-      "avatar": "https://i.pravatar.cc/45",
-      "name": "fff",
-      "ownerId": "vvNjEx_",
-      "id": "EkQhQxe"
-    },
-    {
-      "avatar": "https://i.pravatar.cc/45",
-      "name": "алена",
-      "ownerId": "vvNjEx_",
-      "id": "pN2t7Ro"
-    },
-    {
-      "avatar": "https://i.pravatar.cc/45",
-      "name": "sadasdas",
-      "ownerId": "nIan3R1",
-      "id": "F9XauWr"
-    },
-    {
-      "avatar": "https://i.pravatar.cc/45",
-      "name": "daaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-      "ownerId": "DEa-2Km",
-      "id": "sPz6XlD"
-    },
-    {
-      "avatar": "https://i.pravatar.cc/45",
-      "name": "ddddddddddddddd",
-      "ownerId": "DEa-2Km",
-      "id": "eR4oTld"
-    },
-    {
-      "avatar": "https://i.pravatar.cc/45",
-      "name": "sssssssssssssssssssssssss",
-      "ownerId": "NRS_Qwf",
-      "id": "t5ro-7d"
-    },
-    {
-      "avatar": "https://i.pravatar.cc/45",
-      "name": "ddddd",
-      "ownerId": "1",
-      "id": "RPistPP"
-    },
-    {
-      "avatar": "https://i.pravatar.cc/45",
-      "name": "ssssssssss",
-      "ownerId": "1",
-      "id": "lb1sHwn"
-    },
-    {
-      "avatar": "https://i.pravatar.cc/45",
-      "name": "a",
-      "ownerId": "1",
-      "id": "vEW80k0"
     }
   ]
 }

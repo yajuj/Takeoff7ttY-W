@@ -9,8 +9,8 @@ export interface IAuthState {
 
 export enum AuthActionEnum {
   SET_IS_AUTH = 'SET_IS_AUTH',
-  SET_ERROR = 'SET_ERROR',
-  SET_IS_LOADING = 'SET_IS_LOADING',
+  SET_ERROR = 'SET_AUTH_ERROR',
+  SET_IS_LOADING = 'SET_AUTH_IS_LOADING',
   SET_USER = 'SET_USER',
 }
 
