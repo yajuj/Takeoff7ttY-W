@@ -72,7 +72,11 @@ export const signUp =
         `/users?username=${username}`
       );
       if (existingUser[0]) throw new Error();
+<<<<<<< HEAD
 
+=======
+      
+>>>>>>> c5d94d4b36da382081a665d34e3a07057e047914
       const { data } = await client.post<IUser>('/users', {
         username,
         password,
